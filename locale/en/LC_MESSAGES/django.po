@@ -33,3 +33,6 @@ msgstr "Unique ID for this particular bookacross whole library"
 
 msgid "BookAvailability"
 msgstr "Book availability"
+
+msgid "BookGenre"
+msgstr "Enter a book genre (e.g.Science Fiction)"

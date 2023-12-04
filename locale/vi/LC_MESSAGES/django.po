@@ -33,3 +33,6 @@ msgstr "ID độc nhất cho từng cuốn sách của thư viện"
 
 msgid "BookAvailability"
 msgstr "Trạng thái"
+
+msgid "BookGenre"
+msgstr "Nhập thể loại (VD: Khoa học giả tưởng)"
