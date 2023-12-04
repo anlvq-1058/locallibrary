@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+{% load i18n %}
+
+{% block content %}
+  <h1>{% translate "indexTitle" %}</h1>
+  <p>{% translate "indexWelcome" %} <em>Mozilla Developer Network</em>!</p>
+  <h2>{% translate "indexDynamic" %}</h2>
+  <p>{% translate "indexRecordCounts" %}</p>
+  <ul>
+    <li><strong>{% translate "Books" %}</strong> {{ num_books }}</li>
+    <li><strong>{% translate "Copies" %}</strong> {{ num_instances }}</li>
+    <li><strong>{% translate "Copies available" %}</strong> {{ num_instances_available }}</li>
+    <li><strong>{% translate "Authors" %}</strong> {{ num_authors }}</li>
+  </ul>
+{% endblock %}

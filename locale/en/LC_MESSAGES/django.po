@@ -23,7 +23,7 @@ msgstr "Enter a brief description of the book"
 
 #: locallibrary/settings.py:128
 msgid "IsbnNumber"
-msgstr "13 Character <a href="https://www.isbn-international.org/content/what-isbn">ISBN number</a>"
+msgstr "13 Character <a href='https://www.isbn-international.org/content/what-isbn'>ISBN number</a>"
 
 msgid "SelectGenre"
 msgstr "Select a genre for this book"
@@ -36,3 +36,27 @@ msgstr "Book availability"
 
 msgid "BookGenre"
 msgstr "Enter a book genre (e.g.Science Fiction)"
+
+msgid "indexTitle"
+msgstr "Local Library Home"
+
+msgid "indexWelcome"
+msgstr "Welcome to LocalLibrary, a website developed by"
+
+msgid "indexDynamic"
+msgstr "Dynamic content"
+
+msgid "indexRecordCounts"
+msgstr "The library has the following record counts:"
+
+msgid "Books"
+msgstr "Books:"
+
+msgid "Copies"
+msgstr "Copies:"
+
+msgid "CopiesAvailable"
+msgstr "Copies available:"
+
+msgid "Authors"
+msgstr "Authors:"
