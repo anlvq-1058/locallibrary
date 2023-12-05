@@ -23,7 +23,7 @@ msgstr "Nhập mô tả ngắn gọn về cuốn sách"
 
 #: locallibrary/settings.py:128
 msgid "IsbnNumber"
-msgstr "13 ký tự <a href="https://www.isbn-international.org/content/what-isbn">Số ISBN </a>"
+msgstr "13 ký tự <a href='https://www.isbn-international.org/content/what-isbn'>Số ISBN </a>"
 
 msgid "SelectGenre"
 msgstr "Chọn thể loại cho cuốn sách"
@@ -36,3 +36,36 @@ msgstr "Trạng thái"
 
 msgid "BookGenre"
 msgstr "Nhập thể loại (VD: Khoa học giả tưởng)"
+
+msgid "indexTitle"
+msgstr "Local Library Home"
+
+msgid "indexWelcome"
+msgstr "Welcome to LocalLibrary, a website developed by"
+
+msgid "indexDynamic"
+msgstr "Dynamic content"
+
+msgid "indexRecordCounts"
+msgstr "The library has the following record counts:"
+
+msgid "Books"
+msgstr "Books:"
+
+msgid "Copies"
+msgstr "Copies:"
+
+msgid "CopiesAvailable"
+msgstr "Copies available:"
+
+msgid "Authors"
+msgstr "Authors:"
+
+msgid "Home"
+msgstr "Trang chủ"
+
+msgid "All books"
+msgstr "Quản lý sách"
+
+msgid "All authors"
+msgstr "Quản lý tác giả"
