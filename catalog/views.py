@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from catalog.models import Book, Author, BookInstance, Genre
+from django.views import generic
+from django.shortcuts import get_object_or_404
+
 # Create your views here.
 def index(request):
   """View function for home page of site."""
@@ -15,3 +18,15 @@ def index(request):
              'num_authors': num_authors,
             }
   return render(request, 'index.html', context=context)
+
+class BookListView(generic.ListView):
+  model = Book
+  queryset = Book.objects.all()
+  paginate_by = 10
+
+class BookDetailView(generic.DetailView):
+  model = Book
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    return context
