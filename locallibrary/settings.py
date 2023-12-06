@@ -59,7 +59,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'catalog/templates')
+            os.path.join(BASE_DIR, 'catalog/templates'),
+            os.path.join(BASE_DIR, 'templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -137,3 +138,6 @@ LOCALE_PATHS = BASE_DIR / 'locale/',
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+LOGIN_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

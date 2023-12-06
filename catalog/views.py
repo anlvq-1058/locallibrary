@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from catalog.models import Book, Author, BookInstance, Genre
 from django.views import generic
-from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
+@login_required
 # Create your views here.
 def index(request):
   """View function for home page of site."""
@@ -27,9 +29,18 @@ class BookListView(generic.ListView):
   queryset = Book.objects.all()
   paginate_by = 10
 
-class BookDetailView(generic.DetailView):
+class BookDetailView(LoginRequiredMixin, generic.DetailView):
   model = Book
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
     return context
+
+class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
+  model = BookInstance
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context['bookinstance_list'] = BookInstance.objects.filter(borrower = self.request.user)
+    return context
+  def get_template_names(self):
+    return ['catalog/bookinstance_list_borrowed_user.html']

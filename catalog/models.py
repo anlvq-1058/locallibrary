@@ -1,8 +1,10 @@
+from datetime import date
+import uuid
 from django.db import models
 from django.urls import reverse
-import uuid
-from .utils.constants import LOAN_STATUS
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import User
+from .utils.constants import LOAN_STATUS
 
 class Genre(models.Model):
   """Model representing a book genre."""
@@ -44,11 +46,15 @@ class BookInstance(models.Model):
                             default='m',
                             help_text=_('BookAvailability'),
                             )
+  borrower = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
   class Meta:
     ordering = ['due_back']
   def __str__(self):
     """String for representing the Model object."""
     return f'{self.id} ({self.book.title})'
+  @property
+  def is_overdue(self):
+    return self.due_back and date.today() > self.due_back
 
 class Author(models.Model):
   """Model representing an author."""
