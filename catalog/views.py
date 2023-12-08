@@ -7,9 +7,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
+from rest_framework.views import APIView
+from rest_framework import viewsets
 from catalog.forms import RenewBookModelForm
+from catalog.serializers import BooksSerializer
 from catalog.models import Book, Author, BookInstance, Genre
-
 @login_required
 # Create your views here.
 def index(request):
@@ -106,3 +108,7 @@ class AuthorDetailView(generic.DetailView):
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
     return context
+
+class ApiBookListView(viewsets.ModelViewSet):
+  queryset = Book.objects.all().order_by('title').prefetch_related('genre')
+  serializer_class = BooksSerializer
