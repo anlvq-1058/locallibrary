@@ -88,6 +88,14 @@ DATABASES = {
         'OPTIONS': {
            'read_default_file': BASE_DIR / 'connection.cnf',
          }
+    },
+    'test': {
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'database': 'locallibrary_test',
+            'user': 'root',
+            'password': '',
+         }
     }
 }
 

@@ -22,7 +22,6 @@ class BooksSerializer(serializers.ModelSerializer):
   def get_hello(self, obj):
     return "hello id: %i" % obj.pk
 
-
 class BookInstanceSerializer(serializers.ModelSerializer):
   class Meta:
     model = BookInstance
