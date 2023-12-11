@@ -15,10 +15,15 @@ class AuthorSerializer(serializers.ModelSerializer):
 
 class BooksSerializer(serializers.ModelSerializer):
   author = AuthorSerializer()
-  genre = GenreSerializer(many=True)
   hello = serializers.SerializerMethodField()
   class Meta:
     model = Book
     fields = ['id', 'title', 'genre', 'author', 'genre', 'hello']
   def get_hello(self, obj):
     return "hello id: %i" % obj.pk
+
+
+class BookInstanceSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = BookInstance
+    fields = ['id', 'book', 'imprint', 'due_back', 'status', 'borrower']

@@ -17,11 +17,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import RedirectView
-from rest_framework import routers
-from catalog import views
-
-router = routers.DefaultRouter()
-router.register(r'book-list', views.ApiBookListView)
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -29,9 +24,9 @@ from rest_framework_simplejwt.views import (
 )
 
 urlpatterns = [
-    path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
     path('catalog/', include('catalog.urls')),
+    path('api/', include('catalog_api.urls')),
     path('', RedirectView.as_view(url='catalog/')),
     path("__debug__/", include("debug_toolbar.urls")),
     path('accounts/', include('django.contrib.auth.urls')),
