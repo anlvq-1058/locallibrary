@@ -1,4 +1,3 @@
-from rest_framework.views import APIView
 from rest_framework import viewsets, generics as gn
 from rest_framework.response import Response
 from catalog.models import Book, Author, BookInstance, Genre
