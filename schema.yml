@@ -1,0 +1,637 @@
+openapi: 3.0.3
+info:
+  title: ''
+  version: 0.0.0
+paths:
+  /api/book-list/:
+    get:
+      operationId: book_list_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - book-list
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedBooksList'
+          description: ''
+    post:
+      operationId: book_list_create
+      tags:
+      - book-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Books'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Books'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Books'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Books'
+          description: ''
+  /api/book-list/{id}/:
+    get:
+      operationId: book_list_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this book.
+        required: true
+      tags:
+      - book-list
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Books'
+          description: ''
+    put:
+      operationId: book_list_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this book.
+        required: true
+      tags:
+      - book-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Books'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Books'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Books'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Books'
+          description: ''
+    patch:
+      operationId: book_list_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this book.
+        required: true
+      tags:
+      - book-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBooks'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBooks'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBooks'
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Books'
+          description: ''
+    delete:
+      operationId: book_list_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this book.
+        required: true
+      tags:
+      - book-list
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/borrow_book/:
+    get:
+      operationId: borrow_book_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - borrow_book
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedBookInstanceList'
+          description: ''
+    post:
+      operationId: borrow_book_create
+      tags:
+      - borrow_book
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookInstance'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BookInstance'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BookInstance'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookInstance'
+          description: ''
+  /api/renew_book/{id}:
+    get:
+      operationId: renew_book_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - renew_book
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookInstance'
+          description: ''
+    put:
+      operationId: renew_book_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - renew_book
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookInstance'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BookInstance'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BookInstance'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookInstance'
+          description: ''
+    patch:
+      operationId: renew_book_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - renew_book
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBookInstance'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBookInstance'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBookInstance'
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookInstance'
+          description: ''
+    delete:
+      operationId: renew_book_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - renew_book
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/schema/:
+    get:
+      operationId: schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - en
+          - vi
+      tags:
+      - schema
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/token/:
+    post:
+      operationId: token_create
+      description: |-
+        Takes a set of user credentials and returns an access and refresh JSON web
+        token pair to prove the authentication of those credentials.
+      tags:
+      - token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenObtainPair'
+          description: ''
+  /api/token/refresh/:
+    post:
+      operationId: token_refresh_create
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      tags:
+      - token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefresh'
+          description: ''
+components:
+  schemas:
+    Author:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        date_of_birth:
+          type: string
+          format: date
+          nullable: true
+        date_of_death:
+          type: string
+          format: date
+          nullable: true
+          title: Died
+      required:
+      - first_name
+      - id
+      - last_name
+    BlankEnum:
+      enum:
+      - ''
+    BookInstance:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique ID for this particular bookacross whole library
+        book:
+          type: integer
+        imprint:
+          type: string
+          maxLength: 200
+        due_back:
+          type: string
+          format: date
+          nullable: true
+        status:
+          description: |-
+            Book availability
+
+            * `m` - Maintenance
+            * `o` - On loan
+            * `a` - Available
+            * `r` - Reserved
+          oneOf:
+          - $ref: '#/components/schemas/StatusEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        borrower:
+          type: integer
+          nullable: true
+      required:
+      - book
+      - imprint
+    Books:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 200
+        genre:
+          type: array
+          items:
+            type: integer
+          description: Select a genre for this book
+        author:
+          $ref: '#/components/schemas/Author'
+        hello:
+          type: string
+          readOnly: true
+      required:
+      - author
+      - genre
+      - hello
+      - id
+      - title
+    PaginatedBookInstanceList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookInstance'
+    PaginatedBooksList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Books'
+    PatchedBookInstance:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique ID for this particular bookacross whole library
+        book:
+          type: integer
+        imprint:
+          type: string
+          maxLength: 200
+        due_back:
+          type: string
+          format: date
+          nullable: true
+        status:
+          description: |-
+            Book availability
+
+            * `m` - Maintenance
+            * `o` - On loan
+            * `a` - Available
+            * `r` - Reserved
+          oneOf:
+          - $ref: '#/components/schemas/StatusEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        borrower:
+          type: integer
+          nullable: true
+    PatchedBooks:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 200
+        genre:
+          type: array
+          items:
+            type: integer
+          description: Select a genre for this book
+        author:
+          $ref: '#/components/schemas/Author'
+        hello:
+          type: string
+          readOnly: true
+    StatusEnum:
+      enum:
+      - m
+      - o
+      - a
+      - r
+      type: string
+      description: |-
+        * `m` - Maintenance
+        * `o` - On loan
+        * `a` - Available
+        * `r` - Reserved
+    TokenObtainPair:
+      type: object
+      properties:
+        username:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          readOnly: true
+      required:
+      - access
+      - password
+      - refresh
+      - username
+    TokenRefresh:
+      type: object
+      properties:
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          writeOnly: true
+      required:
+      - access
+      - refresh
+  securitySchemes:
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

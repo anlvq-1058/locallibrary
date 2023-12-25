@@ -1,8 +1,10 @@
-from rest_framework.views import APIView
-from rest_framework import viewsets, generics as gn
+from rest_framework import generics as gn
+from rest_framework import viewsets
 from rest_framework.response import Response
-from catalog.models import Book, Author, BookInstance, Genre
-from catalog_api.serializers import BooksSerializer, BookInstanceSerializer
+
+from catalog.models import Author, Book, BookInstance, Genre
+from catalog_api.serializers import BookInstanceSerializer, BooksSerializer
+
 
 class ApiBookListView(viewsets.ModelViewSet):
   queryset = Book.objects.all().order_by('title')
