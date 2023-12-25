@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Author, Genre, Book, BookInstance
+
+from .models import Author, Book, BookInstance, Genre
+
 
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
@@ -22,7 +24,7 @@ class BookInstanceAdmin(admin.ModelAdmin):
   list_filter = ('status', 'due_back')
   list_display = ('id', 'book', 'imprint', 'due_back', 'status')
   fieldsets = (
-                (None, 
+                (None,
                   {'fields': ('book', 'imprint', 'id')}
                 ),
                 (

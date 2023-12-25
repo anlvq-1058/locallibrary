@@ -1,7 +1,9 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
-from catalog.models import Book, Author, BookInstance, Genre
+
+from catalog.models import Author, Book, BookInstance, Genre
+
 
 class GenreSerializer(serializers.ModelSerializer):
   class Meta:
